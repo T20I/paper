@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL Past Papers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(ellipse at top, #1a0000 0%, #000000 50%, #1a0000 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 0, 0, 0.03) 2px,
+                    rgba(255, 0, 0, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-title {
+            font-size: 4em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 50%, #990000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+            letter-spacing: 4px;
+            animation: pulse 3s ease-in-out infinite;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.8));
+            }
+        }
+
+        .brand-subtitle {
+            color: #ff3333;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section{
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(135deg, rgba(20, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
+            border: 3px solid #ff0000;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 10px 60px rgba(255, 0, 0, 0.4),
+                inset 0 0 40px rgba(255, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 0, 0, 0.1) 50%,
+                transparent 70%
+            );
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff0000;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            text-shadow: 
+                0 0 20px rgba(255, 0, 0, 0.8),
+                0 0 40px rgba(255, 0, 0, 0.4);
+            animation: glow 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 20px rgba(255, 0, 0, 0.8),
+                    0 0 40px rgba(255, 0, 0, 0.4);
+            }
+            to {
+                text-shadow: 
+                    0 0 30px rgba(255, 0, 0, 1),
+                    0 0 60px rgba(255, 0, 0, 0.6);
+            }
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            font-weight: 400;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .paper {
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            animation: slideIn 0.5s ease-out backwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        .paper:nth-child(2) { animation-delay: 0.1s; }
+        .paper:nth-child(3) { animation-delay: 0.15s; }
+        .paper:nth-child(4) { animation-delay: 0.2s; }
+        .paper:nth-child(5) { animation-delay: 0.25s; }
+        .paper:nth-child(6) { animation-delay: 0.3s; }
+        .paper:nth-child(7) { animation-delay: 0.35s; }
+        .paper:nth-child(8) { animation-delay: 0.4s; }
+        .paper:nth-child(9) { animation-delay: 0.45s; }
+        .paper:nth-child(10) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .paper span {
+            color: #ff3333;
+            font-weight: 700;
+            font-size: 1.3em;
+            min-width: 60px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        button {
+            cursor: pointer;
+            padding: 14px 28px;
+            font-size: 1em;
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 50%, #990000 100%);
+            color: #fff;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 20px rgba(255, 0, 0, 0.4),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #ff3333 0%, #ff0000 50%, #cc0000 100%);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 8px 30px rgba(255, 0, 0, 0.6),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+            border-color: #fff;
+        }
+
+        button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* Tablet and below */
+        @media (max-width: 900px) {
+            body {
+                padding: 25px 15px;
+            }
+
+            .brand-header {
+                margin-bottom: 35px;
+            }
+
+            .brand-title {
+                font-size: 2.8em;
+                letter-spacing: 2px;
+            }
+
+            .brand-subtitle {
+                font-size: 1em;
+                letter-spacing: 1.5px;
+            }
+
+            .section {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1em;
+                margin-bottom: 25px;
+            }
+
+            .paper {
+                font-size: 17px;
+                gap: 12px;
+            }
+
+            button {
+                padding: 12px 24px;
+                font-size: 0.95em;
+            }
+        }
+
+        /* Large mobile phones */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .brand-header {
+                margin-bottom: 30px;
+            }
+
+            .brand-title {
+                font-size: 2.3em;
+                letter-spacing: 1.5px;
+            }
+
+            .brand-subtitle {
+                font-size: 0.9em;
+                letter-spacing: 1px;
+            }
+
+            .section {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            .paper {
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 15px;
+                font-size: 16px;
+            }
+
+            .paper span {
+                font-size: 1.25em;
+            }
+
+            button {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 0.95em;
+            }
+        }
+
+        /* Standard mobile phones */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            .brand-header {
+                margin-bottom: 25px;
+            }
+
+            .brand-title {
+                font-size: 1.9em;
+                letter-spacing: 1px;
+            }
+
+            .brand-subtitle {
+                font-size: 0.85em;
+                letter-spacing: 0.5px;
+            }
+
+            .section {
+                padding: 22px 18px;
+                border-width: 2px;
+                border-radius: 12px;
+            }
+
+            h1 {
+                font-size: 1.15em;
+                margin-bottom: 8px;
+            }
+
+            h2 {
+                font-size: 0.95em;
+                margin-bottom: 20px;
+            }
+
+            .paper {
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+
+            .paper span {
+                font-size: 1.2em;
+            }
+
+            button {
+                padding: 11px 18px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Small mobile phones */
+        @media (max-width: 360px) {
+            body {
+                padding: 12px 8px;
+            }
+
+            .brand-header {
+                margin-bottom: 20px;
+            }
+
+            .brand-title {
+                font-size: 1.6em;
+                letter-spacing: 0.5px;
+            }
+
+            .brand-subtitle {
+                font-size: 0.75em;
+                letter-spacing: 0.3px;
+            }
+
+            .section {
+                padding: 18px 15px;
+            }
+
+            h1 {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 0.9em;
+            }
+
+            .paper {
+                font-size: 14px;
+                margin-bottom: 10px;
+                gap: 8px;
+            }
+
+            .paper span {
+                font-size: 1.15em;
+                min-width: 50px;
+            }
+
+            button {
+                padding: 10px 16px;
+                font-size: 0.85em;
+            }
+        }
+
+        /* Large desktops */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1600px;
+            }
+
+            .section {
+                max-width: 650px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brand-header">
+        <div class="brand-title">E-Tech</div>
+        <div class="brand-subtitle">Advanced Level Past Papers Collection</div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h1>A-Level E-Tech පසුගිය විභාග ප්‍රශ්න පත්‍ර සිංහල මාධ්‍ය</h1>
+            <div class="paper"><span>2015</span> <button onclick="window.location.href='2015 et.pdf'">Click Here to download PDF</button></div>
+            <div class="paper"><span>2016</span> <button onclick="window.location.href='2016 et.pdf'">Click Here to download PDF</button></div>
+            <div class="paper"><span>2017</span> <button onclick="window.location.href='2017 et.pdf'">Click Here to download PDF</button></div>
+            <div class="paper"><span>2018</span> <button onclick="window.location.href='2018 et.pdf'">Click Here to download PDF</button></div>
+            <div class="paper"><span>2019</span> <button onclick="window.location.href='2019 et.pdf'">Click Here to download PDF</button></div>
+            <div class="paper"><span>2020</span> <button onclick="window.location.href='2020 et.pdf'">Click Here to download PDF</button></div>
+            <div class="paper"><span>2021</span> <button onclick="window.location.href='2021 et.pdf'">Click Here to download PDF</button></div>
+            <div class="paper"><span>2022</span> <button onclick="window.location.href='2022 et.pdf'">Click Here to download PDF</button></div>
+            <div class="paper"><span>2023</span> <button onclick="window.location.href='2023 et.pdf'">Click Here to download PDF</button></div>
+        </div>
+    </div>
+</body>
+</html>
